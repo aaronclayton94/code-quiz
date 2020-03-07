@@ -1,0 +1,16 @@
+#startQuiz {
+    font-size: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.btn {
+    width: 150px;
+    height: 60px;
+    margin-top: 10px;
+    border: solid #8c8c8c;
+}
+
+.timer {
+    color: white;
+}
