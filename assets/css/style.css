@@ -1,16 +1,39 @@
-#startQuiz {
-    font-size: 20px;
-    margin-left: 10%;
+#quiz {
+    font-size: 25px;
+    margin-left: 20%;
     margin-right: 10%;
+    max-width: 60%;
 }
 
 .btn {
-    width: 150px;
-    height: 60px;
+    height: 50px;
     margin-top: 10px;
     border: solid #8c8c8c;
+    margin-right: 2px;
+}
+.jumbotron {
+    background-color: #f2f2f2;
+}
+body {
+    background-color: #f2f2f2
 }
 
 .timer {
     color: white;
+}
+
+#name {
+    width: 40%;
+}
+
+#questions h2 {
+    margin-top: 10%;
+}
+
+#questions #choices {
+    margin-top: 5%;
+}
+
+.questions {
+    text-align: center;
 }

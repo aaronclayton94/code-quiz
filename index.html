@@ -7,35 +7,50 @@
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js" defer></script>
+    <script src="./assets/js/questions.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row-12">
-            <nav class="navbar navbar-dark bg-dark">
-                <span class="navbar-text">
-                <a href="highscores.html">View Highscores</a>
-                </span>
-                <div class="timer">Time: <span id="time">0</span></div>
-            </nav>
-        </div>
 
-        <div class="wrapper">
-            <div class="row">
-                <div class="col-12 mt-5 text-center">
-                    <h1>Coding Quiz Challenge</h1>
-                    <p id="startQuiz" class="mt-4">
-                        Try to answer the following code-related questions within the time
-                        limit. Keep in mind that incorrect answers will penalize your
-                        score/time by ten seconds!
-                    </p>
-                    <button type="button" class="btn btn-dark" id="start"><b>Start Quiz</b></button>
+    <div class="row-12">
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-text">
+            <a href="highscores.html">View Highscores</a>
+            </span>
+            <div class="timer">Time Left: <span id="time">75</span></div>
+        </nav>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-5 text-center" id="beginQuiz">
+                <h1>Coding Quiz Challenge</h1>
+                <p id="quiz" class="mt-4">
+                    Try to answer the following code-related questions within the time
+                    limit. Keep in mind that incorrect answers will penalize your
+                    score/time by ten seconds!
+                </p>
+                <button type="button" class="btn btn-dark" id="start">Start Quiz</button>
+            </div>
+    </div>
+        <div class="container questions">
+            <div id="questions" class="d-none text-center">
+                <h2 id="question-section"></h2>
+                <div id="choices"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="finish-screen" class="d-none">
+                <div class="text-center mt-5">
+                    <h2>Finished!</h2>
+                    <p>Your final score is <span id="final-score"></span>.</p>
+                    <p>Enter Name: <input type="text" id="name">
+                    <button type="button" class="btn btn-dark" id="submit">Submit</button></p>
                 </div>
             </div>
-            
-        </div>
 
-    </div>
+            <div class="correct-incorrect d-none text-center" id="correct-incorrect">
+            </div>    
+        </div>
 
       
 </body>
