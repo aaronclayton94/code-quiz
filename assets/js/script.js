@@ -1,38 +1,38 @@
 // list of all questions, choices, and answers
 var questions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
-    },
-    {
-      title: "Arrays in JavaScript can be used to store ____.",
-      choices: [
-        "numbers and strings",
-        "other arrays",
-        "booleans",
-        "all of the above"
-      ],
-      answer: "all of the above"
-    },
-    {
-      title:
-        "String values must be enclosed within ____ when being assigned to variables.",
-      choices: ["commas", "curly brackets", "quotes", "parentheses"],
-      answer: "quotes"
-    },
-    {
-      title:
-        "A very useful tool used during development and debugging for printing content to the debugger is:",
-      choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-      answer: "console.log"
-    }
-  ];
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+  },
+  {
+    title: "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer: "parentheses"
+  },
+  {
+    title: "Arrays in JavaScript can be used to store ____.",
+    choices: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above"
+    ],
+    answer: "all of the above"
+  },
+  {
+    title:
+      "String values must be enclosed within ____ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "quotes", "parentheses"],
+    answer: "quotes"
+  },
+  {
+    title:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+    answer: "console.log"
+  }
+];
 
 // quiz variables
 var questionIndex = 0;
@@ -109,9 +109,10 @@ function questionClick() {
     } else {
         rightWrong.textContent = "Correct!";    
     }
-    
+
+
     // flash right/wrong 
-    rightWrong.setAttribute("class", "correct-incorrect");
+    rightWrong.setAttribute("class", "correct-incorrect text-center ");
     setTimeout(function() {
         rightWrong.setAttribute("class", "correct-incorrect d-none");
     }, 1000);
@@ -160,17 +161,22 @@ function saveHighscore() {
 
     var name = nameEl.value.trim();
 
+    // check if value isnt empty
     if (name !== "") {
-
+        // get scores from localstorage or set to empty array if no scores
         var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
+        // create new user score
         var newScore = {
             score: time,
             name: name
         };
 
+        // save to localstorage
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+        // go to highscores page
         window.location.href = "highscores.html";
     }
 }
@@ -182,7 +188,7 @@ function checkForEnter(event) {
     }
   }
   
-  // user clicks button to submit initials
+  // user clicks button to submit name
   submitBtn.onclick = saveHighscore;
   
   // user clicks button to start quiz
@@ -190,6 +196,41 @@ function checkForEnter(event) {
   
   nameEl.onkeyup = checkForEnter;
 
+
+  
+
+
+// highscores // 
+
+function printHighscores () {
+  // get highscores from localstorage or set as empty array
+  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+  // rank highscores by highest time in descending order
+  highscores.sort(function(a, b) {
+    return b.score - a.score;
+  });
+
+  highscores.forEach(function(score) {
+    // create li tag for each score
+    var liTag = document.createElement("li");
+    liTag.textContent = score.name + " - " + score.score;
+
+    // display on page
+    var olEl = document.getElementById("highscores");
+    olEl.appendChild(liTag);
+  });
+}
+
+// clear highscores
+function clearHighscores() {
+  window.localStorage.removeItem("highscores");
+  window.location.reload();
+}
+
+document.getElementById("clear").onclick = clearHighscores;
+// run when page is loaded
+printHighscores();
 
 
   
