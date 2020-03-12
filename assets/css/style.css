@@ -37,3 +37,12 @@ body {
 .questions {
     text-align: center;
 }
+
+.table-bordered {
+    padding: 10px;
+    font-size: 20px;
+    margin: auto;
+    width: 50% !important; 
+    max-width: 300px;
+    
+}
